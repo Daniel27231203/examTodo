@@ -24,7 +24,21 @@ const api = index.injectEndpoints({
       }),
       invalidatesTags: ["product"],
     }),
+    deleteProduct: build.mutation<
+      PRODUCTS.DeleteProductsResponse,
+      PRODUCTS.DeleteProductsRequest
+    >({
+      query: (id) => ({
+        url: `${url}/${id}`,
+        methods: "DELETE",
+      }),
+      invalidatesTags: ["product"],
+    }),
   }),
 });
 
-export const { useGetProductsQuery, useCreateProductMutation } = api;
+export const {
+  useGetProductsQuery,
+  useCreateProductMutation,
+  useDeleteProductMutation,
+} = api;
