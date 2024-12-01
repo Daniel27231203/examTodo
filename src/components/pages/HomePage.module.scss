@@ -1,0 +1,27 @@
+.HomePage {
+  .content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    .card {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+      border: 1px solid violet;
+      img {
+        width: 200px;
+        height: auto;
+      }
+      h2 {
+        font-size: 18px;
+        color: violet;
+      }
+      p {
+        font-size: 15px;
+        color: violet;
+      }
+    }
+  }
+}
