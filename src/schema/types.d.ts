@@ -1,13 +1,11 @@
 interface ProductGet {
   _id?: number;
   title: string;
-  description: string;
-  img: string;
+  img?: string;
 }
 
 interface ProductCreate {
-  // files: string[];
+  files?: string[];
   title: string;
-  description: string;
-  img: string;
+  img?: string;
 }

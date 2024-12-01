@@ -6,5 +6,11 @@ namespace PRODUCTS {
   type CreateProductsRequest = ProductCreate;
 
   type DeleteProductsResponse = void;
-  type DeleteProductsRequest = { id: number };
+  type DeleteProductsRequest = number;
+
+  type updateTodoResponse = ProductGet;
+  type updateTodoRequest = {
+    _id: number;
+    data: ProductGet;
+  };
 }

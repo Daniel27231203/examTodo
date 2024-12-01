@@ -19,7 +19,7 @@ const api = index.injectEndpoints({
     >({
       query: (body) => ({
         url: url,
-        methods: "POST",
+        method: "POST",
         body: body,
       }),
       invalidatesTags: ["product"],
@@ -30,7 +30,18 @@ const api = index.injectEndpoints({
     >({
       query: (id) => ({
         url: `${url}/${id}`,
-        methods: "DELETE",
+        method: "DELETE",
+      }),
+      invalidatesTags: ["product"],
+    }),
+    updateTodo: build.mutation<
+      PRODUCTS.updateTodoResponse,
+      PRODUCTS.updateTodoRequest
+    >({
+      query: ({ _id, data }) => ({
+        url: `${url}/${_id}`,
+        method: "PATCH",
+        body: data,
       }),
       invalidatesTags: ["product"],
     }),
@@ -41,4 +52,5 @@ export const {
   useGetProductsQuery,
   useCreateProductMutation,
   useDeleteProductMutation,
+  useUpdateTodoMutation,
 } = api;

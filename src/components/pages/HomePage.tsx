@@ -6,11 +6,13 @@ import {
 import React from "react";
 import scss from "./HomePage.module.scss";
 import { MdDelete } from "react-icons/md";
+import { IoPencil } from "react-icons/io5";
+import { useRouter } from "next/navigation";
 
 const HomePage = () => {
   const { data } = useGetProductsQuery();
-  const [Delete] = useDeleteProductMutation();
-  console.log("🚀 ~ HomePage ~ data:", data);
+  const [deleteMutation] = useDeleteProductMutation();
+  const router = useRouter();
   return (
     <section className={scss.HomePage}>
       <div className="container">
@@ -19,13 +21,15 @@ const HomePage = () => {
             <div key={el._id} className={scss.card}>
               <img src={el.img} alt={el.title} />
               <h2>{el.title}</h2>
-              <p>{el.description}</p>
+              <button onClick={() => deleteMutation(el._id)}>
+                <MdDelete />
+              </button>
               <button
                 onClick={() => {
-                  Delete(el._id);
+                  router.push(`/update/${el._id}`);
                 }}
               >
-                <MdDelete />
+                <IoPencil />
               </button>
             </div>
           ))}
